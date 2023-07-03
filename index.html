@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Calculator APP</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- creating a calculator app -->
+    <div class="calculator">
+        <div class="calculator_form">
+            <h4 class="calculator_stat">This calulator is developed by Hamid.</h4>
+            <form>
+                <div class="calculator_display">
+                    <input id="display" style="border: none;" type="text" name="display" />
+                </div>
+                <div class="calculator_form_btns">
+                    <input type="button" value="AC" class="allclear" />
+                    <input type="button" value="DE" id="one_clear" />
+                    <input type="button" value="." class="input_btn" />
+                    <input type="button" value="/" class="input_btn" />
+                </div>
+                <div class="calculator_form_btns">
+                    <input type="button" id="seven" value="7" class="input_btn" />
+                    <input type="button" value="8" class="input_btn" />
+                    <input type="button" value="9" class="input_btn" />
+                    <input type="button" value="+" class="input_btn" />
+                </div>
+                <div class="calculator_form_btns">
+                    <input type="button" value="4" class="input_btn" />
+                    <input type="button" value="5" class="input_btn" />
+                    <input type="button" value="6" class="input_btn" />
+                    <input type="button" value="-" class="input_btn" />
+                </div>
+                <div class="calculator_form_btns">
+                    <input type="button" value="1" class="input_btn" />
+                    <input type="button" value="2" class="input_btn" />
+                    <input type="button" value="3" class="input_btn" />
+                    <input type="button" value="*" class="input_btn" />
+                </div>
+                <div class="calculator_form_btns">
+                    <input type="button" value="0" class="input_btn" />
+                    <input type="button" value="00" class="input_btn" />
+                    <input type="button" value="=" class="equal_btn" id="calculate" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+        console.log("Hamid")
+
+        //getting display input and button fields
+        let display = document.getElementById("display")
+        let input_btn = document.getElementsByClassName('input_btn');
+
+        //getting values from input buttons and displaying in display field
+        document.addEventListener('DOMContentLoaded', function() {
+
+            let input_btn = document.querySelectorAll('.input_btn');
+
+            input_btn.forEach(function(input) {
+                input.addEventListener('click', function(e) {
+                    let value = e.target.value;
+                    console.log(value);
+                    display.value += value;
+
+                })
+            })
+
+        })
+
+        //getting delete button and delete all data in display input
+        let allclear = document.querySelector('.allclear');
+
+        allclear.onclick = function() {
+
+            //display.value = `Thanks for using this.`;
+            display.value = ``;
+            console.log('allclear')
+        }
+
+        //getting one delete button and delete one item from display
+        let one_clear = document.getElementById('one_clear');
+
+        one_clear.onclick = function() {
+            let data = display.value;
+            data = data.slice(0, -1)
+
+            display.value = data
+
+            console.log(typeof(data))
+        }
+
+        //calculate all data of display input field
+        let calculate = document.getElementById('calculate');
+
+        calculate.onclick = function() {
+
+            let data = display.value;
+            console.log(data)
+            let calculate_data = eval(data);
+            console.log(calculate_data)
+            display.value = calculate_data
+
+        }
+    </script>
+</body>
+
+</html>
